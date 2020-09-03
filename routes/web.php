@@ -22,8 +22,4 @@ Route::get('/user','UserController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/upload',function(Request $request){
-    $request->image->store('images','public');
-    return 'Uploaded';
-    // dd($request->image);
-});
+Route::post('/upload','UserController@uploadavatar');
