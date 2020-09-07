@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/todos','TodoController@index');
 Route::get('/todos/create','TodoController@create');
-Route::get('/todos/{id}/edit','TodoController@edit');
+Route::get('/todos/{todo}/edit','TodoController@edit');
 Route::post('/todos/create','TodoController@store');
 Route::get('/', function () {
     return view('welcome');

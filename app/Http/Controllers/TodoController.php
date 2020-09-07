@@ -18,9 +18,9 @@ class TodoController extends Controller
     public function create(){
         return view('todos.create');
     }
-    public function edit($id){
-        // dd($id);
-        $todo = Todo::find($id);
+    public function edit(Todo $todo){
+        dd($todo->title);
+        // $todo = Todo::find($id);
         // return $todo;
         return view('todos.edit',compact('todo'));
     }
