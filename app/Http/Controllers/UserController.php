@@ -17,12 +17,14 @@ class UserController extends Controller
             $this->deleteOldImage();
             $request->image->storeAs('images',$filename,'public');
             auth()->user()->update(['avatar'=>$filename]);
+            return  redirect()->back()->with('message','Image Uploaded!!');
         }
 
 
 
         // $request->image->store('images','public');
-        return  redirect()->back();
+       
+        return  redirect()->back()->with('error','Image not Uploaded!!');
         // dd($request->image);
 
     }
