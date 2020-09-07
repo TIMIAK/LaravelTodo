@@ -8,27 +8,30 @@
     @include('layouts.flash')
     @foreach($todos as $todo)
     <li class="flex justify-between py-2">
+       <div>
+        @include('todos.completeButton')
+       </div>
+
         @if($todo->completed)
             <p class="line-through">{{$todo->title}}</p>
         @else
             <p>{{$todo->title}}</p>
         @endif
+
         <div>
-            <a href="/todos/{{$todo->id}}/edit" class="m-5 p-1 bg-orange-400 border cursor-pointer rounded text-black">Edit</a>
-            @if($todo->completed)
-                <span onclick="event.preventDefault();document.getElementById('form-incomplete-{{$todo->id}}').submit()" class="m-5 p-1 bg-green-400 border cursor-pointer rounded">Done</span>
-                <form action="{{route('todo.incomplete',$todo->id)}}" id="{{'form-incomplete-'.$todo->id}}" method="post" style="display: none">
-                    @csrf
-                    @method('delete')
-                </form>
-            @else
-                <span onclick="event.preventDefault();document.getElementById('form-complete-{{$todo->id}}').submit()" class="m-5 p-1 bg-grey-400 border cursor-pointer rounded">Done</span>
-                <form action="{{route('todo.complete',$todo->id)}}" id="{{'form-complete-'.$todo->id}}" method="post" style="display: none">
-                    @csrf
-                    @method('put')
-                </form>
-            @endif
+            <a href="/todos/{{$todo->id}}/edit" class="m-5 bg-orange-400 border cursor-pointer rounded text-black">Edit</a>
+            <span class="m-5  bg-orange-400 border cursor-pointer rounded text-black" onclick="event.preventDefault();
+               if(confirm('Are you sure?')){
+                document.getElementById('form-delete-{{$todo->id}}')
+                .submit()}"
+            >Del</span>
+
+            <form action="{{route('todo.delete',$todo->id)}}" id="{{'form-delete-'.$todo->id}}" method="post" style="display: none">
+                @csrf
+                @method('delete')
+            </form>
         </div>
+
     </li>
     @endforeach
 </ul>

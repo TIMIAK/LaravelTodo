@@ -12,7 +12,7 @@
     <div class="text-center flex justify-center pt-10">
         <div class="w-1/3 border border-grey-600 rounded py-4">
 
-            @yield('content') 
+            @yield('content')
         </div>
     </div>
 </body>
