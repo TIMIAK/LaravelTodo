@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Validator;
 class TodoController extends Controller
 {
     public function index(){
-        $todos = Todo::all();
+        $todos = Todo::orderBy('completed')->get();
+        // $todos = Todo::all();
         // return $todos;
         return view('todos.index',compact('todos'));
     }
@@ -34,5 +35,12 @@ class TodoController extends Controller
         // dd($request->all());
         //Update todo
     }
-
+    public function complete(Todo $todo){
+        $todo->update(['completed'=> true]);
+        return redirect()->back()->with('message','Taxt Marked as Completed');
+    }
+    public function incomplete(Todo $todo){
+        $todo->update(['completed'=> false]);
+        return redirect()->back()->with('message','Taxt Marked as In-Completed');
+    }
 }
