@@ -8,7 +8,7 @@
     @foreach($todos as $todo)
     <li class="flex justify-center py-2">
         <p>{{$todo->title}}</p>
-        <a href="/todos/edit" class="m-5 p-1 bg-orange-400 border cursor-pointer rounded text-black">Edit</a>
+    <a href="/todos/{{$todo->id}}/edit" class="m-5 p-1 bg-orange-400 border cursor-pointer rounded text-black">Edit</a>
     </li>
     @endforeach
 </ul>
