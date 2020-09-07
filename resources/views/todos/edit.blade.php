@@ -9,5 +9,5 @@
     <input type="text" name="title" value="{{$todo->title}}" class="p-2 border rounded">
     <input type="submit" value="Update" class="p-2 border rounded">
 </form>
-<a href="/todos" class="m-5 py-1 bg-white-400 border cursor-pointer rounded text-black">Go Back</a>
+<a href="{{route('todo.index')}}" class="m-5 py-1 bg-white-400 border cursor-pointer rounded text-black">Go Back</a>
 @endsection

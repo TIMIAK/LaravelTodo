@@ -2,7 +2,7 @@
 @section('content')
 <div class="flex justify-between border-b pb-4 px-4">
     <h3 class="text-2xl">All your Todos</h3>
-    <a href="/todos/create" class="mx-5 py-1 bg-blue-400 cursor-pointer rounded text-white">Create New ToDo</a>
+    <a href="{{route('todo.create')}}" class="mx-5 py-1 bg-blue-400 cursor-pointer rounded text-white">Create New ToDo</a>
 </div>
 <ul class="my-5">
     @include('layouts.flash')
@@ -19,14 +19,14 @@
         @endif
 
         <div>
-            <a href="/todos/{{$todo->id}}/edit" class="m-5 bg-orange-400 border cursor-pointer rounded text-black">Edit</a>
+            <a href="{{route('todo.edit',$todo->id)}}" class="m-5 bg-orange-400 border cursor-pointer rounded text-black">Edit</a>
             <span class="m-5  bg-orange-400 border cursor-pointer rounded text-black" onclick="event.preventDefault();
                if(confirm('Are you sure?')){
                 document.getElementById('form-delete-{{$todo->id}}')
                 .submit()}"
             >Del</span>
 
-            <form action="{{route('todo.delete',$todo->id)}}" id="{{'form-delete-'.$todo->id}}" method="post" style="display: none">
+            <form action="{{route('todo.destroy',$todo->id)}}" id="{{'form-delete-'.$todo->id}}" method="post" style="display: none">
                 @csrf
                 @method('delete')
             </form>
