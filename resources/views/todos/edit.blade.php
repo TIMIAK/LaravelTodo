@@ -1,6 +1,6 @@
 @extends('todos.layout')
 @section('content')
-<h3 class="text-2xl">Update this To-Do List</h3>
+<h3 class="text-2xl border-b pb-4">Update this To-Do List</h3>
 
 @include('layouts.flash')
 <form action="{{route('todo.update',$todo->id)}}" method="post" class="py-5">

@@ -1,6 +1,6 @@
 @extends('todos.layout')
 @section('content')
-<h3 class="text-2xl">What do you want to do next</h3>
+<h3 class="text-2xl border-b pb-4">What do you want to do next</h3>
 @include('layouts.flash')
 <form action="/todos/create" method="post" class="py-5">
     @csrf
