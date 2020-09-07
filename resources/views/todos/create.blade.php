@@ -1,21 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{asset('css/tailwind.css')}}">
-    <title>ToDo || Create</title>
-</head>
-<body>
-    <div class="text-center pt-10">
-        @include('layouts.flash')
-        <h3 class="text-2xl">What do you want to do next</h3>
-        <form action="/todos/create" method="post" class="py-5">
-            @csrf
-            <input type="text" name="title" class="p-2 border rounded">
-            <input type="submit" value="Submit" class="p-2 border rounded">
-        </form>
-    </div>
-</body>
-</html>
+@extends('todos.layout')
+@section('content')
+<h3 class="text-2xl">What do you want to do next</h3>
+@include('layouts.flash')
+<form action="/todos/create" method="post" class="py-5">
+    @csrf
+    <input type="text" name="title" class="p-2 border rounded">
+    <input type="submit" value="Submit" class="p-2 border rounded">
+</form>
+<a href="/todos" class="m-5 py-1 bg-white-400 border cursor-pointer rounded text-black">Go Back</a>
+@endsection
