@@ -9,6 +9,7 @@
 </head>
 <body>
     <div class="text-center pt-10">
+        @include('layouts.flash')
         <h3 class="text-2xl">What do you want to do next</h3>
         <form action="/todos/create" method="post" class="py-5">
             @csrf
