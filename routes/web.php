@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/todos','TodoController@index');
+Route::get('/todos/create','TodoController@create');
+Route::get('/todos/edit','TodoController@edit');
+Route::post('/todos/create','TodoController@store');
 Route::get('/', function () {
     return view('welcome');
 });
