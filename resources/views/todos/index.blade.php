@@ -5,6 +5,7 @@
     <a href="/todos/create" class="mx-5 py-1 bg-blue-400 cursor-pointer rounded text-white">Create New ToDo</a>
 </div>
 <ul class="my-5">
+    @include('layouts.flash')
     @foreach($todos as $todo)
     <li class="flex justify-center py-2">
         <p>{{$todo->title}}</p>
