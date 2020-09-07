@@ -14,17 +14,22 @@ class UserController extends Controller
     {
         if($request->hasFile('image')){
             $filename = $request->image->getClientOriginalName();
-            if(Auth()->user()->avatar){
-                Storage::delete('/Public/Images/'.Auth()->user()->avatar);
-            }
+            $this->deleteOldImage();
             $request->image->storeAs('images',$filename,'public');
             auth()->user()->update(['avatar'=>$filename]);
         }
 
 
+
         // $request->image->store('images','public');
         return  redirect()->back();
         // dd($request->image);
+
+    }
+    protected function deleteOldImage(){
+        if(Auth()->user()->avatar){
+            Storage::delete('/public/images/'.Auth()->user()->avatar);
+        }
     }
     public function index()
     {
