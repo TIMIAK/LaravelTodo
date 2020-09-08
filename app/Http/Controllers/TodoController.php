@@ -15,7 +15,11 @@ class TodoController extends Controller
         $this->middleware('auth')->except('index');
     }
     public function index(){
-        $todos = Todo::orderBy('completed')->get();
+        $todos = auth()->user()->todos->sortBy('completed');
+        // dd($todos);
+        // return $todos;
+
+        // $todos = Todo::orderBy('completed')->get();
         // $todos = Todo::all();
         // return $todos;
         return view('todos.index',compact('todos'));
@@ -30,7 +34,9 @@ class TodoController extends Controller
         return view('todos.edit',compact('todo'));
     }
     public function store(TodoCreateRequest $request){
-        Todo::create($request->all());
+        // dd(auth()->user()->todos());
+        auth()->user()->todos()->create($request->all());
+        // Todo::create($request->all());
         return redirect()->back()->with('message','ToDo Created Successfully');
     }
     public function update(TodoCreateRequest $request, Todo $todo){
