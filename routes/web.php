@@ -13,11 +13,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('/todo', 'TodoController');
+// Route::middleware('auth')->group(function(){
+    Route::resource('/todo', 'TodoController');
 
 
-Route::put('/todos/{todo}/complete','TodoController@complete')->name('todo.complete');
-Route::delete('/todos/{todo}/incomplete','TodoController@incomplete')->name('todo.incomplete');
+    Route::put('/todos/{todo}/complete','TodoController@complete')->name('todo.complete');
+    Route::delete('/todos/{todo}/incomplete','TodoController@incomplete')->name('todo.incomplete');
+
+// });
 Route::get('/', function () {
     return view('welcome');
 });
