@@ -6,7 +6,7 @@
 </div>
 <ul class="my-5">
     @include('layouts.flash')
-    @foreach($todos as $todo)
+    @forelse($todos as $todo)
     <li class="flex justify-between py-2">
        <div>
         @include('todos.completeButton')
@@ -33,7 +33,9 @@
         </div>
 
     </li>
-    @endforeach
+    @empty
+        <p>No task available, Create one</p>
+    @endforelse
 </ul>
 @endsection
 
