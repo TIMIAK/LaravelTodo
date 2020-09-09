@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{asset('css/tailwind.css')}}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
     <title>ToDo || Create</title>
+    @livewireStyles
 </head>
 <body>
     <div class="text-center flex justify-center pt-10">
@@ -15,5 +16,6 @@
             @yield('content')
         </div>
     </div>
+    @livewireScripts
 </body>
 </html>
